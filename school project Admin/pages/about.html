@@ -1,0 +1,119 @@
+
+
+	 <ul class="breadcrumb push-down-0" >
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li class="active">Fee</li>
+                  </ul>
+   
+
+    <!-- START CONTENT FRAME TOP -->
+         <div class="page-title">                    
+            <h2><span class="fa fa-money" aria-hidden="true"></span>  Fee Report</h2>
+        </div>                           
+
+   
+    <div>
+                        
+        
+       <div style="margin: 5%; width: 100%%; padding-top: 130px">
+
+        
+        <div class="form-group row" ng-controller="showfeeController">
+          <label class="col-xs-2 col-form-label">Class</label>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <select class="combobox form-control" id="comboClass"  data-ng-model="Select_class.Class_Id" ng-options="obj.Class_Id as obj.Std for obj in classlist"  data-ng-change="getstudentlist()" required="required">
+              <option value="">Select a Class</option>
+                
+              </select>
+            </div>
+            </div>
+        
+
+          <div class="form-group row">
+          <label class="col-xs-2 col-form-label">Student Name</label>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <select ng-model="Select_Student.Student_Id" id="Student_Id"  ng-options="obj.Student_Id as obj.FirstName for obj in Detail" class="combobox form-control"  data-ng-change="getFeeList()" >
+                <option value="" > Select Student Name</option>
+                
+              </select>
+              </div>
+            </div>
+            </div>
+            
+
+       <div class="form-group row">
+            <label class="col-xs-2 col-form-label">FeeType</label>
+            <div class="col-sm-6">
+              <select class="combobox form-control" ng-model="Select_Feetype.ID"  id="Fee_type" ng-options="obj.ID as obj.Fee_type for obj in feetype" ng-change="getFeeDetails()">
+                <option value="">Select FeeType</option>
+                </select>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+         
+         <div ng-repeat="s in feetdetails" >
+          <div class="form-group row">
+            <label  for="example-url-input" class="col-xs-2 col-form-label">Fee Amount</label>
+            <div class="col-xs-6">
+              <input  class="form-control" type="text"   value={{s.Amount}} readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  for="example-url-input" class="col-xs-2 col-form-label" >Paid</label>
+            <div class="col-xs-6">
+              <input type="number" class="form-control" type="text" value={{s.Fee_Paid}} readonly>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label  for="example-url-input" class="col-xs-2 col-form-label">Balance</label>
+            <div class="col-xs-6">
+              <input type="number" class="form-control" type="text" value={{s.Balance}} readonly >
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label  for="example-url-input" class="col-xs-2 col-form-label">Pay fee</label>
+            <div class="col-xs-6">
+              <input type="text"  class="form-control"  ng-model="Fee_Paid" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'   required>
+            </div>
+          </div>
+
+
+        <div class="form-group row" style="margin:5% ; padding-left: 300px" ng-controller="aboutController"  >
+            <button type="button" value="submit" class="btn btn-info" ng-click="UpdateFee()">Update Fee</button>
+          </div>
+
+         
+
+
+
+
+
+
+          
+
+
+         </div>
+        <!-- END CONTENT FRAME -->
+
+
+    </div>            
+    <!-- END PAGE CONTENT -->
+
+
+
+<!-- CSS INCLUDE -->        
+<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+
+<!-- END TEMPLATE -->
+
+
+
+
+
+

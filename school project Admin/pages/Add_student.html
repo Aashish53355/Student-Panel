@@ -1,0 +1,380 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb push-down-0">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Report</a></li>
+  <li class="active">Add Student</li>
+</ul>
+<div class="content-frame">   
+
+  <!-- START CONTENT FRAME TOP -->
+
+  <div class="page-title" >            
+    <h2><span class="fa fa-smile-o"></span>Add Student</h2>
+  </div>                       
+
+
+  <div>
+    <div class="clearfix">
+
+      <br>
+
+    </div>
+
+    <div style="margin: 5%; width: 100%%">
+
+      <table BORDER="2" style="border-color: #1caf9a; width: 100%"  ng-controller="Add_student_classController">
+        <tr  style="background-color: #1caf9a; ">
+          <td >
+            <div class="col-sm-4"><h2 style="color: white">Add Student</h2></div>
+            <div class="form-group row">
+              <div class="col-sm-3">
+                <select class="combobox form-control" id="Addstudent"  data-ng-model="Select_class.Class_Id" ng-options="obj.Class_Id as obj.Std for obj in classlist"  data-ng-change="getAddedstudents()" >
+                  <option value="">Select a Class</option>
+
+                </select>
+                <div>
+                  <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModal">Add New Student</button> 
+                </div>
+
+
+                <div class="modal" id="myModal" role="dialog" >
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        <h4 class="modal-title">Add New Student</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div style="margin: 5%; width: 100%% ; margin-right: -20%">
+
+                          <div class="clearfix" ng-controller="Add_studentController">
+                            <br>
+
+                            <div>
+                              <div class="card-block" style="margin: 8%; width: 100%%; padding-top:-70px; padding-left: 30px " >
+                                <div class="form-group row">
+                                  <label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control" type="text" data-ng-model="Name" >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="example-text-input" class="col-xs-2 col-form-label"> Father's Name</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control" type="text"   data-ng-model="Father_Name">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="example-text-input" class="col-xs-2 col-form-label"> Mother's Name</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control" type="text"  ng-model="Mother_Name" >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row" ng-controller="Add_student_classController">
+                                  <label class="col-xs-2 col-form-label">Class</label>
+                                  <div class="form-group row">
+                                    <div class="col-sm-6"> 
+                                      <select class="combobox form-control" id="comboClass"  data-ng-model="Select_class.Class_Id" ng-options="obj.Class_Id as obj.Std for obj in classlist"  required="required">
+                                        <option value="">Select a Class</option>
+
+                                      </select>{{Select_class.Class_Id}}
+                                      <!-- <input class="form-control" type="text"  id="classid" ng-model="select_class.Class_Id" /> -->
+
+                                    </div>
+                                  </div>
+                                </div>
+                                {{Select_class.Class_Id}}
+                                <div class="form-group row">
+                                  <label  class="col-xs-2 col-form-label">Date of Birth</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control" type="Date"   data-ng-model="Date_of_Birth">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row" >
+                                <label class="col-xs-2 col-form-label" > Admission Date</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control"  ng-model= "Date" type="text"   >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="example-text-input" class="col-xs-2 col-form-label">Address</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control" type="textarea"    data-ng-model="Address">
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="example-email-input" class="col-xs-2 col-form-label">Mobile number</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control"  type="text" maxlength="10"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-ng-model="Mobile_number" >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="example-email-input" class="col-xs-2 col-form-label"> Father's Mobile number</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control"  type="text" maxlength="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  ng-model="Father_Mobile_number"  >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <label for="example-email-input" class="col-xs-2 col-form-label"> Mother's Mobile number</label>
+                                  <div class="col-xs-6">
+                                    <input class="form-control"  type="text" maxlength="10" max="10" onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-ng-model="Mother_Mobile_number" >
+                                  </div>
+                                </div>
+
+                                <div class="form-group row" style="margin:13% ; padding-left: 120px" data-ng-controller="Add_studentController">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="button" value="submit" class="btn btn-info" ng-click="InsertStudent(ClassId)">Submit</button>
+                                </div>
+
+
+
+                              </div>
+                            </div>
+
+
+                          </div>
+                          <!-- {{select_Class}} -->
+                        </td>
+                      </tr>
+                      <tr height=20%>
+
+                        <TD>
+                          <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+                            <thead>
+                              <tr>
+                                <th>S.No.</th>
+                                <th>Name</th>
+                                <th>Father Name</th>
+                                <th>Mother Name</th>
+                                <th>Date of Birth</th>
+                                <th>Date</th>
+                                <th>Address</th>
+                                <th>Mobile number</th>
+                                <th>Father Mobile no.</th>
+                                <th>Mother Mobile no.</th>
+
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="a in StudentList">
+                                <td>
+                                  {{$index +1}}
+                                </td>
+                                <td>
+                                  {{a.Name}}
+                                </td>
+                                <td>
+                                  {{a.Father_Name}}
+                                </td> 
+
+                                <td>
+                                  {{a.Mother_Name}}
+                                </td>
+
+                                <td>
+                                  {{a.Date_of_Birth|date:'yyyy-MM-dd'}}
+                                </td>
+                                <td>
+                                  {{a.Date|date:'yyyy-MM-dd'}}
+                                </td> 
+
+                                <td>
+                                  {{a.Address}}
+                                </td>
+                                <td>
+                                  {{a.Mobile_number}}
+                                </td>  
+                                <td>
+                                  {{a.Father_Mobile_number}}
+                                </td>  
+                                <td>
+                                  {{a.Mother_Mobile_number}}
+                                </td>  
+
+                                <td>  
+                                 <i class="fa fa-pencil-square-o"
+
+                                 title="Edit"
+                                 id="btnEditstudentData" name="btnEditstudentData"
+                                 ng-click="editstudent(a)"
+                                 data-role="button"
+                                 data-toggle="modal"
+                                 data-target="#editAddstudentModal"></i>
+                               </td>  
+                               <td>  
+                                 <i class="fa fa-trash-o" 
+
+                                 title="Delete"
+                                 id="btnDeletestudentDetails" name="btnDeletestudentDetails"
+                                 ng-click="getdatatoDeleteStudentdetails(a)"
+                                 data-role="button"
+                                 data-toggle="modal"
+                                 data-target="#DeleteStudentDetailsModal"></i>
+                               </td>    
+                             </tr>
+                           </tbody>
+                         </TD>
+
+                       </tr>
+                     </table>
+                   </div>
+                   <!-- END CONTENT FRAME -->
+
+                   <div class="modal" id="editAddstudentModal" role="dialog" >  <!--Holiday Edit  modal-->
+
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                          <h4 class="modal-title">Edit Student Details</h4>
+                        </div>
+
+                        <div class="modal-body">
+                          <!-- <div style="margin: 5%; width: 100%% ; padding-top: 130px" data-ng-repeat="s in Detail"> -->
+
+                          <div class="form-group row"  >
+                            <label  class="col-xs-2 col-form-label">Student Id</label>
+                            <div class="col-xs-6">
+                              <input name="TxtId" id="TxtId" class="form-control"  type="text"  >
+                            </div>
+                          </div>{{a.Id}}
+
+                          <div class="form-group row"  >
+                            <label for="example-url-input" class="col-xs-2 col-form-label">Name</label>
+                            <div class="col-xs-6">
+                              <input class="form-control" name="TxtName" id="TxtName"   ng-model="Name" type="text"  >
+                            </div>{{Name}}
+                          </div>
+
+                          <div class="form-group row">
+                            <label  class="col-xs-2 col-form-label">Father Name </label>
+                            <div class="col-xs-6">
+                             <input class="form-control" name="TxtFather_Name" id="TxtFather_Name" ng-model="Father_Name" type="text" >
+                           </div>
+                         </div>
+
+                         <div class="form-group row">
+                            <label  class="col-xs-2 col-form-label">Mother Name </label>
+                            <div class="col-xs-6">
+                             <input class="form-control" name="TxtMother_Name" id="TxtMother_Name" ng-model="Mother_Name" type="text" >
+                           </div>
+                         </div>
+                         `
+                         <div class="form-group row">
+                          <label  class="col-xs-2 col-form-label">Class_Id</label>
+                          <div class="col-xs-6">
+                          <input class="form-control" name="TxtClass_Id" id="TxtClass_Id" ng-model="Class_Id" type="text" >
+                          </div>
+                        </div>
+
+                        <div class="form-group row" >
+                          <label class="col-xs-2 col-form-label" >Date of Birth</label>
+                          <div class="col-sm-6">
+                            <input class="form-control" name="TxtDate_of_Birth" id="TxtDate_of_Birth" ng-model= "Date_of_Birth" type="text"   >
+                          </div>
+                        </div>
+
+                        <div class="form-group row" >
+                          <label class="col-xs-2 col-form-label" >Date</label>
+                          <div class="col-sm-6">
+                            <input class="form-control" name="TxtDate" id="TxtDate" ng-model= "Date" type="text"   >
+                          </div>
+                        </div>
+
+                        <div class="form-group row" >
+                          <label class="col-xs-2 col-form-label" >Address</label>
+                          <div class="col-sm-6">
+                            <input class="form-control" name="TxtAddress" id="TxtAddress" ng-model= "Address" type="text"   >
+                          </div>
+                        </div>
+
+                        <div class="form-group row" >
+                          <label class="col-xs-2 col-form-label" >Mobile number</label>
+                          <div class="col-sm-6">
+                            <input class="form-control" name="TxtMobile_number" id="TxtMobile_number" ng-model= "Mobile_number" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  >
+                          </div>
+                        </div>
+
+                        <div class="form-group row" >
+                          <label class="col-xs-2 col-form-label" >Father Mobile number</label>
+                          <div class="col-sm-6">
+                            <input class="form-control" name="TxtFather_Mobile_number" id="TxtFather_Mobile_number" ng-model= "Father_Mobile_number" type="text"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+                          </div>
+                        </div>
+                        <div class="form-group row" >
+                          <label class="col-xs-2 col-form-label" > Mother Mobile number</label>
+                          <div class="col-sm-6">
+                            <input class="form-control" name="TxtMother_Mobile_number" id="TxtMother_Mobile_number" ng-model= "Mother_Mobile_number" type="text"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+                          </div>
+                        </div>
+
+
+                        <div class="form-group row" style="margin:13% ; padding-left: 123px" >
+                          <button type="button" value="submit"  data-ng-click="UpdateAddstudent()"  class="btn btn-info" >Submit</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END CONTENT FRAME -->
+                <div class="modal"  id="DeleteStudentDetailsModal" role="dialog" >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+                      </div>
+                      <div class="modal-body">
+
+                           <div class="form-group row">
+                       <label  class="col-xs-2 col-form-label">Transport Id</label>
+                       <div class="col-xs-6">
+                       <input name="TxtId" id="TxtId" class="form-control"  type="text" readonly>
+                       </div>
+                    </div>{{a.Id}}
+
+
+
+                           <div class="form-group row">
+                       <label  class="col-xs-2 col-form-label">Transport Id</label>
+                       <div class="col-xs-6">
+                       <input name="TxtClass_Id" id="TxtClass_Id" class="form-control"  type="text" readonly>
+                       </div>
+                    </div>{{a.Class_Id}}
+
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete Record  <b></b>?</div>
+
+                      </div>
+                      <div class="modal-footer ">
+                      <button type="button" value="submit" class="btn btn-info" data-ng-click="DeleteStudentdetails(a)"></span> Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+              <!-- END CONTENT FRAME -->
+
+         
+        </div>
+        <!-- END BREADCRUMB -->                                                
+
+        
+
+

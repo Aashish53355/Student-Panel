@@ -1,0 +1,272 @@
+
+                           
+  
+          <!-- START BREADCRUMB -->
+          <ul class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Report</a></li>
+              <li class="active">Transport</li>
+          </ul>
+<!--    <div class="content-frame">  -->  
+
+      <!-- START CONTENT FRAME TOP -->
+                           
+                <div class="page-title">           
+              <h2><span  class="fa fa-taxi" aria-hidden="true"></span> Transport Details</h2>
+                  </div>    
+     <div>
+          <div class="clearfix"><br></div>
+          
+          <div style="margin: 5%; width: 100%% ">
+
+              <table BORDER="2" style="border-color: #1caf9a; width: 100%"  ng-controller="TransportController">
+                  <tr  style="background-color: #1caf9a; ">
+                  
+                      <td >
+                           <div class="col-sm-4"><h2 style="color: white">Transport Details</h2></div>
+                          <input type="search" class="col-sm-2" name="search" style="float: right;">
+                      </td>                         
+                  </tr>
+
+       <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModal">Add Transport Details</button> 
+
+
+       <div class="modal" id="myModal" role="dialog" >
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+              <h4 class="modal-title">Add Holiday</h4>
+            </div>
+            <div class="modal-body">
+            <div class="card-block" style="margin: 5%; width: 100%%; padding-top: 30px border: 1px solid #ccc; border-radius: 4px;" data-ng-controller="TransportController" >
+
+                <div class="form-group row">
+                  <label for="example-email-input" class="col-xs-2 col-form-label">Route Number</label>
+                  <div class="col-xs-6">
+                    <input class="form-control"  type="text" maxlength="5"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-ng-model="Route_number" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="example-email-input" class="col-xs-2 col-form-label">Registration Number</label>
+              <div class="col-xs-6">
+                <input class="form-control"  type="text" data-ng-model="Registration_number"  required>
+            </div>
+          </div>
+
+            <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label"> Driver Name</label>
+                <div class="col-xs-6">
+                  <input class="form-control" type="text"  onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 46'  data-ng-model="Driver_name" required >
+              </div>
+            </div>
+
+          <div class="form-group row">
+              <label for="example-email-input" class="col-xs-2 col-form-label"> Driver Mobile number</label>
+              <div class="col-xs-6">
+                <input class="form-control"  type="text" maxlength="10"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-ng-model="Driver_Mobile_number" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label" > Helper Name</label>
+              <div class="col-xs-6">
+                <input class="form-control" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 46'  ng-model="Helper_name" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <label for="example-email-input" class="col-xs-2 col-form-label"> Helper Mobile number</label>
+              <div class="col-xs-6">
+                <input class="form-control"  type="text" maxlength="10"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="Helper_mobile_number" required>
+            </div>
+          </div>
+          
+
+          <div class="form-group row" style="margin:5% ; padding-left: 300px">
+              <button type="button" value="submit" class="btn btn-info" data-ng-click="PostTransport()">Submit</button>
+              
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+
+
+          </div>
+
+      </div>
+      </div>
+      </div>
+      </div>
+                  <tr height=20%>
+
+                      <TD>
+                          <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+                             <thead>
+                              <tr>
+                                  <th>S.No.</th>
+                                  <th>Route Number</th>
+                                  <th>Registration Number</th>
+                                  <th>Driver Name</th>
+                                  <th>Driver Mobile</th>
+                                  <th>Helper Name</th>
+                                  <th>Helper Mobile</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr ng-repeat="t in Tansportlist">
+                                  <td>{{$index+1}}</td>
+                                  <td>{{t.Route_number}}</td>
+                                  <td>{{t.Registration_number}}</td>
+                                  <td>{{t.Driver_name}}</td>
+                                  <td>{{t.Driver_Mobile_number}}</td>
+                                  <td>{{t.Helper_name}}</td>
+                                  <td>{{t.Helper_mobile_number}}</td>
+                                  <td>  
+                                   <i class="fa fa-pencil-square-o"
+
+                                   title="Edit"
+                                   id="btnEditTransportData" name="btnEditTransportData"
+                                   ng-click="editTransport(t)"
+                                   data-role="button"
+                                   data-toggle="modal"
+                                   data-target="#editTransportModal"></i>
+                                 </td>
+                                 <td>  
+                                   <i class="fa fa-trash-o" aria-hidden="true"
+
+                                   title="Delete"
+                                   id="btnDeleteTransportData" name="btnDeleteTransportData"
+                                  ng-click="getdatatoDeleteTransport(t)"
+                                   data-role="button"
+                                   data-toggle="modal"
+                                   data-target="#DeleteTransportDataModal"></i>
+                                 </td>
+                              </tr>
+                          </tbody>
+                      </TD>
+
+                  </tr>
+              </table>
+          </div>
+          <div class="modal" id="editTransportModal" role="dialog" >  <!--Holiday Edit  modal-->
+   
+          <div class="modal-dialog">
+
+              <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h4 class="modal-title">Edit Transport Details</h4>
+                  </div>
+
+                      <div class="modal-body">
+                          <!-- <div style="margin: 5%; width: 100%% ; padding-top: 130px" data-ng-repeat="s in Detail"> -->
+
+                                    <div class="form-group row">
+                                        <label  class="col-xs-2 col-form-label">Transport Id</label>
+                                        <div class="col-xs-6">
+                                          <input name="TxtId" id="TxtId" class="form-control"  type="text">
+                                        </div>
+                                    </div>{{t.Id}}
+
+                                    <div class="form-group row">
+                                        <label for="example-url-input" class="col-xs-2 col-form-label">Route Number</label>
+                                        <div class="col-xs-6">
+                                          <input class="form-control" name="TxtRoute_number" id="TxtRoute_number"   ng-model="Route_number" type="text">
+                                        </div>{{Holiday_Name}}
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label  class="col-xs-2 col-form-label">Registration Number</label>
+                                        <div class="col-xs-6">
+                                         <input class="form-control" name="TxtRegistration_number" id="TxtRegistration_number" ng-model="Registration_number" type="text">
+                                       </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label  class="col-xs-2 col-form-label">Driver Name</label>
+                                      <div class="col-xs-6">
+                                        <input class="form-control" name="TxtDriver_name" id="TxtDriver_name" ng-model="Driver_name" type="text" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row" >
+                                        <label class="col-xs-2 col-form-label" >Driver Mobile</label>
+                                        <div class="col-sm-6">
+                                          <input class="form-control" name="TxtDriver_Mobile_number" id="TxtDriver_Mobile_number" ng-model= "Driver_Mobile_number" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row" >
+                                        <label class="col-xs-2 col-form-label" >Helper Name</label>
+                                        <div class="col-sm-6">
+                                          <input class="form-control" name="TxtHelper_name" id="TxtHelper_name" ng-model= "Helper_name" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label" >Helper Mobile</label>
+                                        <div class="col-sm-6">
+                                          <input class="form-control" name="TxtHelper_mobile_number" id="TxtHelper_mobile_number" ng-model= "Helper_mobile_number" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row" style="margin:13% ; padding-left: 123px" >
+                                        <button type="button" value="submit"  data-ng-click="UpdateTransport(t)"  class="btn btn-info" >Submit</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                   </div>
+                          <!-- </div> -->
+                      </div>
+                  </div>
+          </div>
+      </div>
+
+      <div class="modal"  id="DeleteTransportDataModal" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+            </div>
+            <div class="modal-body">
+
+                    <div class="form-group row" hidden>
+                       <label  class="col-xs-2 col-form-label">Transport Id</label>
+                       <div class="col-xs-6">
+                       <input name="TxtId" id="TxtId" class="form-control"  type="text" readonly hidden>
+                       </div>
+                    </div>{{es.Id}}
+                    <div class="form-group row" hidden>
+                       <label  class="col-xs-2 col-form-label">Transport Id</label>
+                       <div class="col-xs-6">
+                       <input name="TxtClass_Id" id="TxtClass_Id" class="form-control"  type="text" readonly hidden>
+                       </div>
+                    </div>{{es.Id}}
+
+
+
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete Record  <b></b>?</div>
+
+            </div>
+            <div class="modal-footer " >
+                <button type="button" class="btn btn-success" ng-click="DeleteTransport(t)"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+                <!-- END CONTENT FRAME -->
+
+
+            </div>            
+            <!-- END PAGE CONTENT -->
+        </div>
+                                 
+                            
+         

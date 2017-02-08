@@ -1,0 +1,243 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb push-down-0">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Report</a></li>
+  <li class="active">Holiday Lists</li>
+</ul>
+<div class="content-frame">   
+
+  <!-- START CONTENT FRAME TOP -->
+  <div class="page-title" >            
+    <h2><span class="fa fa-smile-o"></span> Holiday List</h2>
+  </div>                       
+
+
+  <div>
+    <div class="clearfix"><br></div>
+
+
+
+
+
+    <div style="margin: 5%; width: 100%%">
+
+      <table BORDER="2" style="border-color: #1caf9a; width: 100%"  ng-controller="HolidayController">
+        <tr  style="background-color: #1caf9a; ">
+         <td >
+           <div class="col-sm-4"><h2 style="color: white">Holiday List</h2></div>
+
+
+           <select  ng-model="select_year"  ng-options="x.Year for x in yearlist" data-ng-value="x.Year" ng-change="GetHolidyList()" >
+             <option value="" >-- choose year --</option>
+           </select><!-- Modal -->
+
+
+           <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModal">Add Holiday</button> 
+
+
+           <div class="modal" id="myModal" role="dialog" >
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                  <h4 class="modal-title">Add Holiday</h4>
+                </div>
+                <div class="modal-body">
+                  <div style="margin: 5%; width: 100%% ; padding-top: 130px">
+                    <div class="form-group row">
+                      <label for="example-url-input" class="col-xs-2 col-form-label">Holiday Name</label>
+                      <div class="col-xs-6">
+                        <input class="form-control" ng-model="Holiday_Name" type="text"  placeholder="Example:- Diwali">
+                      </div>{{Holiday_Name}}
+                    </div>
+
+                    <div class="form-group row">
+                      <label  class="col-xs-2 col-form-label">Holiday StartDate</label>
+                      <div class="col-xs-6">
+                       <input class="form-control" ng-model="StartDate" type="Date" >
+                     </div>
+                   </div>
+
+                   <div class="form-group row">
+                    <label  class="col-xs-2 col-form-label">Holiday EndDate</label>
+                    <div class="col-xs-6">
+                      <input class="form-control" ng-model="EndDate" type="Date" >
+                    </div>
+                  </div>
+
+                  <div class="form-group row" >
+                    <label class="col-xs-2 col-form-label" >Year</label>
+                    <div class="col-sm-6">
+                      <input class="form-control" type="text"  ng-model="Year"  placeholder="Example:- 2017">
+                    </div>
+                  </div>
+                  <div class="form-group row" style="margin:13% ; padding-left: 123px" >
+                    <button type="button" value="submit" class="btn btn-info" ng-click="PostHolidayList()">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <tr height=20%>
+
+          <TD>
+            <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+             <thead>
+               <tr>
+                <th>S.No.</th>
+                <th>Holiday Name</th>
+                <th>Holiday Start Date</th>
+                <th>Holiday End Date</th>
+                <th>Year</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="s in Detail" >
+                <td>
+                  {{$index +1}}
+                </td>
+                <td>
+                  {{s.Holiday}}
+                </td>
+                <td>
+                  {{s.StartDate|date:'yyyy-MM-dd'}}
+                </td> 
+
+                <td>
+                  {{s.EndDate|date:'yyyy-MM-dd'}}
+                </td>
+                <td>
+                  {{s.Year}}
+                </td> 
+                <td>   <i class="fa fa-pencil-square-o"
+
+                 title="Edit"
+                 id="btnEditHolidayData" name="btnEditHolidayData"
+                 ng-click="editHoliday(s)"
+                 data-role="button"
+                 data-toggle="modal"
+                 data-target="#editHolidayModal"></i>
+               </td>
+               <td>  
+                       <i class="fa fa-trash-o" aria-hidden="true"
+
+                       title="Delete"
+                       id="btnDeleteHolidayData" name="btnDeleteHolidayData"
+                      ng-click="getdatatoDeleteHoliday(s)"
+                       data-role="button"
+                       data-toggle="modal"
+                       data-target="#DeleteHolidayDataModal"></i>
+                     </td>
+                 </tr>
+                  </tbody>
+                    </TD>
+
+
+
+                  </table>
+
+
+                </div>
+                <div class="modal" id="editHolidayModal" role="dialog" >  <!--Holiday Edit  modal-->
+
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        <h4 class="modal-title">Edit Holiday</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <!-- <div style="margin: 5%; width: 100%% ; padding-top: 130px" data-ng-repeat="s in Detail"> -->
+
+                        <div class="form-group row"  >
+                          <label  class="col-xs-2 col-form-label">Holiday Id</label>
+                          <div class="col-xs-6">
+                            <input name="TxtId" id="TxtId" class="form-control"  type="text"  >
+                          </div>
+                        </div>{{s.Id}}
+
+                        <div class="form-group row"  >
+                          <label for="example-url-input" class="col-xs-2 col-form-label">Holiday Name</label>
+                          <div class="col-xs-6">
+                            <input class="form-control" name="TxtName" id="TxtName"   ng-model="Holiday_Name" type="text"  >
+                          </div>{{Holiday_Name}}
+                        </div>
+
+                        <div class="form-group row">
+                          <label  class="col-xs-2 col-form-label">Holiday StartDate</label>
+                          <div class="col-xs-6">
+                           <input class="form-control" name="dtStartDate" id="dtStartDate" ng-model="StartDate" type="Date|date:'yyyy-MM-dd'" >
+                         </div>
+                       </div>
+                       `
+                       <div class="form-group row">
+                        <label  class="col-xs-2 col-form-label">Holiday EndDate</label>
+                        <div class="col-xs-6">
+                          <input class="form-control" name="dtEndDate" id="dtEndDate" ng-model="EndDate" type="Date|date:'yyyy-MM-dd'" >
+                        </div>
+                      </div>
+
+                      <div class="form-group row" >
+                        <label class="col-xs-2 col-form-label" >Year</label>
+                        <div class="col-sm-6">
+                          <input class="form-control" name="dtYear" id="dtYear" ng-model= "Year" type="text"   >
+                        </div>
+                      </div>
+
+                      <div class="form-group row" style="margin:13% ; padding-left: 123px" >
+                        <button type="button" value="submit"  data-ng-click="UpdateHoliday()"  class="btn btn-info" >Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                </div>
+              </div>
+              <div class="modal"  id="DeleteHolidayDataModal" role="dialog" >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                      <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+                    </div>
+                    <div class="modal-body">
+
+                     <div class="form-group row">
+                       <label  class="col-xs-2 col-form-label">Transport Id</label>
+                       <div class="col-xs-6">
+                       <input name="TxtId" id="TxtId" class="form-control"  type="text" readonly>
+                       </div>
+                    </div>{{s.Id}}
+
+                      <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete Record  <b></b>?</div>
+
+                    </div>
+                    <div class="modal-footer ">
+                      <button type="button" value="submit" class="btn btn-info" data-ng-click="DeleteHoliday(s)"></span> Yes</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- END CONTENT FRAME -->
+
+            </div>
+          </div>
+                                <!-- END CONT
+
+       
+        
+
+

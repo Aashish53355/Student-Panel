@@ -1,0 +1,69 @@
+
+<ul class="breadcrumb push-down-0">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Circular/Assignment</a></li>
+    <li class="active">Circular Inbox</li>
+</ul>
+
+
+<!-- START CONTENT FRAME TOP -->
+<div class="page-title">
+    <h2><span class="fa fa-sticky-note-o" aria-hidden="true"></span> Circular Inbox</h2>
+</div>
+<div>
+    <div style="margin: 5%; width: 100%%; padding-top: 130px">
+        <table BORDER="2" style="border-color: #1caf9a;width: 100%">
+            <tr style="background-color: #1caf9a; ">
+                <td>
+                    <h2 style="color: white">Circular Inbox</h2>
+                </td>
+            </tr>
+            <tr height=20%>
+                <td>
+                    <table class="table table-bordered" ng-controller="circularController" style="margin:1% ; width:98% ">
+                        <thead>
+                            <tr>
+                                <th>Submission_Date</th>
+                                <th>Date</th>
+                                <th>Year</th>
+                                <th>Attachment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="circular in circularresponce">
+                                <td>{{circular.Submission_Date | date:'medium'}}</td>
+                                <td>{{circular.Date | date:'medium'}}</td>
+                                <td>{{circular.Year }}</td>
+                                <td>
+                                    <div className="show-icon">
+                                        <i className="fa fa-bus"></i>
+                                        <a href="assets\images\users\aa.jpg" data-toggle="modal" data-target="#myModal">link text</a>
+                                        <div id="myModal" class="modal " role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+
+                                                <div class="modal-body">
+                                                    <img src="assets\images\users\new.jpg" class="img-responsive" style="width: 50%;height: 20% vertical-align: middle;">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- END CONTENT FRAME -->
+
+
+</div>
+<!-- END PAGE CONTENT -->
+<!-- CSS INCLUDE -->
+<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css" />
+
+<!-- END TEMPLATE -->
+</div>

@@ -1,0 +1,71 @@
+
+
+   <ul class="breadcrumb push-down-0" >
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li class="active">Exam-Schedule</li>
+                  </ul>
+   
+
+    <!-- START CONTENT FRAME TOP -->
+         <div class="page-title">                    
+            <h2><span class="fa fa-paste" aria-hidden="true"></span>Exam Schedule</h2>
+        </div>                           
+
+   
+    
+       <div style="margin: 5%; width: 100%% ; padding-top: 130px">
+
+                    <table BORDER="2" style="border-color: #1caf9a; width: 100%" ng-controller="contactController" >
+                        <tr  style="background-color: #1caf9a; ">
+                        
+                            <td >
+                                 <div class="col-sm-4"><h2 style="color: white">Exam Schedule</h2></div>
+                                <input type="search" class="col-sm-2" name="search" style="float: right;">
+
+
+
+             <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModal">Admin Exam Schedule</button> 
+
+
+             
+                            </td>
+                          
+
+                        </tr>
+                        <tr height=20%>
+
+                            <TD>
+                                <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+                                   <thead>
+                                    <tr >
+                                        <th>S.No.</th>
+                                        <th>Class</th>
+                                        <th>Year</th>
+                                        <th>Exam Date</th>
+                                        <th>Subject</th>
+                                        <th>Term</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="E in Exam_schedule">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{E.Class}}</td>
+                                        <td>{{E.Year}}</td>
+                                        <td>{{E.Date}}</td>
+                                        <td>{{E.Subject}}</td>
+                                        <td>{{E.Term}}</td>
+                                        <td>{{E.Description}}</td>
+                                    </tr>
+                                </tbody>
+                            </TD>
+
+                        </tr>
+                    </table>
+                </div>
+        <!-- END CONTENT FRAME -->        
+<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+
+<!-- END TEMPLATE -->
+

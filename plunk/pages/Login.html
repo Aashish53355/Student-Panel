@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <link href="../css/Login.css" rel="stylesheet" />
+    <script src="../script.js"></script>
+</head>
+
+<body ng-app="scotchApp" ng-controller="loginController">
+    <h2>Welcome to Login </h2>
+    <form  name="mailForm" class="login-content animate" ng-submit="GetUser()" novalidate >
+        <div class="container" ng-model="flag">
+
+            <label><b>Select category</b></label><br />
+            <select ng-model="selectedName" ng-change="myFunc(selectedName)">
+                <option value="Admin">Admin</option>
+                <option value="Student">Student</option>
+                <option value="Parent">Parent</option>
+            </select>
+
+            <label><b>Username</b></label>
+            <input type="email" placeholder="Enter Username" ng-model="uname" name="uname" ng-pattern="re" required/>
+            <span ng-show="mailForm.uname.$error.pattern" style="color:red">Please enter correct email address.</span>
+            <span ng-show="mailForm.uname.$invalid && mailForm.uname.$touched" style="color:red">Email required**</span>
+            <br/>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" ng-model="psw" name="psw" ng-minlength="4" ng-maxlength="8" required/>
+            <span ng-show="mailForm.psw.$error.minlength" style="color:red">Username is too short.</span>
+            <span ng-show="mailForm.psw.$error.maxlength" style="color:red">Username is too long.</span>
+            <span ng-show="mailForm.psw.$invalid && mailForm.psw.$touched" style="color:red">Password required**</span>
+
+
+            <div class="psw">
+                <label>
+                    Forgot <a href="#">password?</a>
+                </label>
+                <button type="submit" ng-disabled="mailForm.uname.$invalid && mailForm.psw.$invalid">Login</button>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>

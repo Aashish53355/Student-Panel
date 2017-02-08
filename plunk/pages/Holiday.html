@@ -1,0 +1,89 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb push-down-0">
+<li><a href="#">Home</a></li>
+<li><a href="#">Report</a></li>
+<li class="active">Holiday Lists</li>
+</ul>
+<div class="content-frame">   
+
+<!-- START CONTENT FRAME TOP -->
+
+<div class="page-title" >            
+    <h2><span class="fa fa-smile-o"></span> Holiday List</h2>
+</div>                       
+
+
+<div>
+    <div class="clearfix">
+
+        <br>
+
+    </div>
+
+    <div style="margin: 5%; width: 100%%">
+
+        <table BORDER="2" style="border-color: #1caf9a; width: 100%"  ng-controller="HolidayController">
+            <tr  style="background-color: #1caf9a; ">
+               <td >
+                   <div class="col-sm-4"><h2 style="color: white">Holiday List</h2></div>
+             <select  ng-model="select_year"  ng-options="x.Year for x in yearlist" data-ng-value="x.Year" ng-change="GetHolidyList()" >
+               <option value="" >-- choose year --</option></select>
+               <!-- {{select_year}} -->
+           </td>
+       </tr>
+       <tr height=20%>
+
+        <TD>
+            <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+             <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Holiday Name</th>
+                    <th>Holiday Start Date</th>
+                    <th>Holiday End Date</th>
+                    <th>Year</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="s in Detail">
+                    <td>
+                        {{$index +1}}
+                    </td>
+                    <td>
+                        {{s.Holiday}}
+                    </td>
+                    <td>
+                        {{s.StartDate|date:'yyyy-MM-dd'}}
+                    </td> 
+
+                    <td>
+                        {{s.EndDate|date:'yyyy-MM-dd'}}
+                    </td>
+                    <td>
+                        {{s.Year}}
+                    </td>            
+                </tr>
+            </tbody>
+        </TD>
+
+    </tr>
+</table>
+</div>
+<!-- END CONTENT FRAME -->
+
+
+</div>            
+<!-- END PAGE CONTENT -->
+</div>
+<!-- END BREADCRUMB -->                                                
+
+<!-- START CONTENT FRAME -->
+
+<!-- END CONTENT FRAME -->
+
+
+</div>            
+<!-- END PAGE CONTENT -->
+</div>
+

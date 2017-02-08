@@ -1,0 +1,66 @@
+                        
+        
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li class="active">Transport</li>
+                </ul>
+    <!--    <div class="content-frame">  -->  
+ 
+            <!-- START CONTENT FRAME TOP -->
+                                 
+                      <div class="page-title">           
+                    <h2><span  class="fa fa-taxi" aria-hidden="true"></span> Transport Details</h2>
+                        </div>    
+           <div>
+                <div class="clearfix">
+
+                    <br>
+
+                </div>
+                
+                <div style="margin: 5%; width: 100%% ">
+               
+                    <table BORDER="2" style="border-color: #1caf9a; width: 100%" >
+                        <tr  style="background-color: #1caf9a; ">
+                        
+                            <td >
+                                 <div class="col-sm-4"><h2 style="color: white">Transport Details</h2></div>
+                                <input type="search" class="col-sm-2" name="search" style="float: right;">
+
+
+                            </td>
+                           
+
+                        </tr>
+                        <tr height=20%>
+
+                            <TD>
+                                <table ng-controller="assignmentController" class="table table-bordered" style="padding: 0px;margin-bottom: 0px;">
+                                  <tr>
+
+                                      <div ng-controller="MainCtrl">
+                                          <div id="grid1" ui-grid="gridOptions" ui-grid-exporter ui-grid-selection class="grid"></div>
+                                          <div ng-if='columnChanged'>
+                                              Column Visibility Changed - name: {{ columnChanged.name }} visible: {{ columnChanged.visible }}
+                                          </div>
+                                      </div>
+                                  </tr>
+                                     
+
+                                </table>
+                            </TD>
+                         
+                        </tr>
+                    </table>
+                </div>
+                <!-- END CONTENT FRAME -->
+
+
+            </div>            
+            <!-- END PAGE CONTENT -->
+        </div>
+                                 
+                            
+         

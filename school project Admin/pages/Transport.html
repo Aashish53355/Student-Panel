@@ -1,0 +1,82 @@
+
+
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li class="active">Transport</li>
+                </ul>
+                <!--    <div class="content-frame">  -->  
+
+                <!-- START CONTENT FRAME TOP -->
+
+                <div class="page-title">           
+                    <h2><span  class="fa fa-taxi" aria-hidden="true"></span> Transport Details</h2>
+                </div>    
+                <div>
+                    <div class="clearfix">
+
+                        <br>
+
+                    </div>
+
+                    <div class="card-block" style="margin: 5%; width: 100%%; padding-top: 30px border: 1px solid #ccc; border-radius: 4px;" data-ng-controller="TransportController" >
+
+                      <div class="form-group row">
+                        <label for="example-email-input" class="col-xs-2 col-form-label">Route Number</label>
+                        <div class="col-xs-6">
+                          <input class="form-control"  type="text" maxlength="5"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-ng-model="Route_number" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="example-email-input" class="col-xs-2 col-form-label">Registration Number</label>
+                    <div class="col-xs-6">
+                      <input class="form-control"  type="text" data-ng-model="Registration_number"  required>
+                  </div>
+                </div>
+
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label"> Driver Name</label>
+                      <div class="col-xs-6">
+                        <input class="form-control" type="text"  onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 46'  data-ng-model="Driver_name" required >
+                    </div>
+                  </div>
+
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-xs-2 col-form-label"> Driver Mobile number</label>
+                    <div class="col-xs-6">
+                      <input class="form-control"  type="text" maxlength="10"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-ng-model="Driver_Mobile_number" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label" > Helper Name</label>
+                    <div class="col-xs-6">
+                      <input class="form-control" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 46'  ng-model="Helper_name" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-xs-2 col-form-label"> Helper Mobile number</label>
+                    <div class="col-xs-6">
+                      <input class="form-control"  type="text" maxlength="10"   onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="Helper_mobile_number" required>
+                  </div>
+                </div>
+
+                <div class="form-group row" style="margin:5% ; padding-left: 300px">
+                    <button type="button" value="submit" class="btn btn-info" data-ng-click="PostTransport()">Submit</button>
+                </div>
+
+
+                </div>
+                </div>
+                <!-- END CONTENT FRAME -->
+
+
+                </div>            
+                <!-- END PAGE CONTENT -->
+                </div>
+
+

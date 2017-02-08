@@ -1,0 +1,73 @@
+                   <!-- START BREADCRUMB -->
+                   <ul class="breadcrumb push-down-0">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li class="active">Holiday Lists</li>
+                </ul>
+                <div class="content-frame">   
+
+                    <!-- START CONTENT FRAME TOP -->
+
+                    <div class="page-title" >            
+                        <h2><span class="fa fa-smile-o"></span> Holiday List</h2>
+                    </div>  
+                    <div style="margin: 5%; width: 100%% ; padding-top: 130px">
+                       <div class="form-group row">
+                        <label for="example-url-input" class="col-xs-2 col-form-label">Holiday Name</label>
+                        <div class="col-xs-6">
+                        <input class="form-control" ng-model="Holiday_Name" type="text"  placeholder="Example:- Diwali">
+                      </div>{{Holiday_Name}}
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-xs-2 col-form-label">Holiday StartDate</label>
+                    <div class="col-xs-6">
+                     <input class="form-control" ng-model="StartDate" type="Date" >
+                 </div>
+             </div>
+             <div class="form-group row">
+                <label  class="col-xs-2 col-form-label">Holiday EndDate</label>
+                <div class="col-xs-6">
+                  <input class="form-control" ng-model="EndDate" type="Date" >
+              </div>
+          </div>
+          <div class="form-group row" ng-controller="Admin_ExamController">
+            <label class="col-xs-2 col-form-label" >Year</label>
+            <div class="col-sm-6">
+             <!--  <select class="combobox form-control"  ng-model="select_year" name="horizontal"  ng-options="x.Year for x in yearlist" data-ng-value="x.Year" required="required" >
+                <option value="" >Select Year</option> -->
+                <input class="form-control" type="text"  ng-model="Year"  placeholder="Example:- 2017">
+                
+            </select>
+        </div>
+
+        <div class="form-group row" style="margin:5% ; padding-left: 300px" ng-controller="HolidayController"  >
+            <button type="button" value="submit" class="btn btn-info" ng-click="PostHolidayList()">Submit</button>
+          </div>
+    </div>
+</div>  
+
+
+
+
+<div>
+    <div class="clearfix">
+
+        <br>
+
+    </div>
+
+    <div style="margin: 5%; width: 100%%">
+
+
+    </div>
+
+
+
+</div>            
+</div>                                      
+
+</div>            
+
+</div>
+

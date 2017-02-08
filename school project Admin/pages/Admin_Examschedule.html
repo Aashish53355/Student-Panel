@@ -1,0 +1,287 @@
+
+
+   <ul class="breadcrumb push-down-0" >
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Report</a></li>
+                    <li class="active">Exam-Schedule</li>
+                  </ul>
+   
+
+    <!-- START CONTENT FRAME TOP -->
+         <div class="page-title">                    
+            <h2><span class="fa fa-paste" aria-hidden="true"></span>Exam Schedule</h2>
+        </div>                           
+
+   
+    
+       <div style="margin: 5%; width: 100%% ; padding-top: 130px">
+
+                    <table BORDER="2" style="border-color: #1caf9a; width: 100%" ng-controller="contactController" >
+                        <tr  style="background-color: #1caf9a; ">
+                        
+                            <td >
+                                 <div class="col-sm-4"><h2 style="color: white">Exam Schedule</h2></div>
+                                <input type="search" class="col-sm-2" name="search" style="float: right;">
+                            <div class="col-sm-3">
+                              <select class="combobox form-control" id="Exam_schedule"  data-ng-model="Select_class.Class_Id" ng-options="obj.Class_Id as obj.Std for obj in classlist" data-ng-change="getExamschedule()" >
+              <option value="">Select a Class</option>
+
+                
+              </select>   
+              </div>
+
+
+          <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModal">Admin Exam Schedule</button> 
+
+
+             <div class="modal" id="myModal" role="dialog" >
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h4 class="modal-title">Admin Exam Schedule</h4>
+                  </div>
+                  <div class="modal-body">
+                   <div style="margin: 5%; width: 100%% ; margin-right: -20%">
+                 
+        <div class="form-group row" ng-controller="contactController">
+          <label class="col-xs-2 col-form-label">Class</label>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <select class="combobox form-control"  ng-model="Select_class.Class_Id"  id="comboClass" ng-options="obj.Class_Id as obj.Std for obj in classlist"  
+               required="required">
+                <option value=" " >Select a Class</option>
+                
+              </select>{{Select_class.Class_Id}}
+            </div>
+            </div>
+          </div>
+
+
+          <div class="form-group row" >
+            <label class="col-xs-2 col-form-label">Year</label>
+            <div class="col-sm-6">
+             <!--  <select class="combobox form-control"  ng-model="select_year"  ng-options="x.Year  for x in YearList"  required="required" >
+                <option value="">Select Year</option>
+                </select>{{select_year}} -->
+                <input type="text" class="form-control" ng-model="select_year"  placeholder="Ex:-2016">
+            </div>
+          </div>
+          
+{{select_year}}
+
+
+          <div class="form-group row">
+            <label  class="col-xs-2 col-form-label">Exam Date</label>
+            <div class="col-xs-6">
+              <input class="form-control" type="Date"  ng-model="Exam_date">
+            </div>
+          </div>
+        <div class="form-group row">
+            <label for="example-url-input" class="col-xs-2 col-form-label">Subject</label>
+            <div class="col-xs-6">
+              <input class="form-control" type="text"  ng-model="Subject" placeholder="Example:- English">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-url-input" class="col-xs-2 col-form-label">Term</label>
+            <div class="col-xs-6">
+              <input class="form-control" type="text"  ng-model="Term" placeholder="Example:-2 0r 3 ">
+            </div>
+          </div>     
+
+          <div class="form-group row">
+            <label  class="col-xs-2 col-form-label">Description</label>
+            <div class="col-xs-6">
+              <input  type="text" class="form-control" ng-model="Description"  placeholder="provide Description" >
+            </div>
+          </div>
+          <div class="form-group row" style="margin:10% ; padding-left: 121px" ng-controller="contactController">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" data-ng-click="InsertExam()">Submit</button >
+
+
+          </div>
+          </div>
+
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+             
+                            </td>
+                          
+
+                        </tr>
+                        <tr height=20%>
+
+                            <TD>
+                                <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+                                   <thead>
+                                    <tr >
+                                        <th>S.No.</th>
+                                        <th>Class</th>
+                                        <th>Year</th>
+                                        <th>Exam Date</th>
+                                        <th>Subject</th>
+                                        <th>Term</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="es in ExamscheduleList">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{es.Class}}</td>
+                                        <td>{{es.Year}}</td>
+                                        <td>{{es.Exam_Date}}</td>
+                                        <td>{{es.Subject}}</td>
+                                        <td>{{es.Term}}</td>
+                                        <td>{{es.Description}}</td>
+                                         <td>  
+                                         <i class="fa fa-pencil-square-o"
+
+                                         title="Edit"
+                                         id="btnEditExamData" name="btnEditExamData"
+                                         ng-click="editExamschedule(es)"
+                                         data-role="button"
+                                         data-toggle="modal"
+                                         data-target="#editExamscheduleModal"></i>
+                                       </td>
+                                       <td>  
+                                   <i class="fa fa-trash-o" aria-hidden="true"
+
+                                   title="Delete"
+                                   id="btnDeleteExamschedule" name="btnDeleteExamschedule"
+                                  ng-click="getdatatoDeleteExamschedule(es)"
+                                   data-role="button"
+                                   data-toggle="modal"
+                                   data-target="#DeleteExamscheduleDataModal"></i>
+                                 </td>
+
+                                    </tr>
+                                </tbody>
+                            </TD>
+
+                        </tr>
+                    </table>
+                </div>
+  <div class="modal" id="editExamscheduleModal" role="dialog" >  
+  <div class="modal-dialog">
+
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            <h4 class="modal-title">Edit Exam schedule</h4>
+          </div>
+
+              <div class="modal-body">
+                  <!-- <div style="margin: 5%; width: 100%% ; padding-top: 130px" data-ng-repeat="s in Detail"> -->
+
+                            <div class="form-group row"  >
+                                <label  class="col-xs-2 col-form-label">Class Id</label>
+                                <div class="col-xs-6">
+                                  <input name="TxtClass_Id" id="TxtClass_Id" class="form-control"  type="text"  >
+                                </div>
+                            </div>{{es.Id}}
+                             <div class="form-group row"  >
+                                <label  class="col-xs-2 col-form-label">Id</label>
+                                <div class="col-xs-6">
+                                  <input name="TxtId" id="TxtId" class="form-control"  type="text"  >
+                                </div>
+                                </div>
+
+                            <div class="form-group row"  >
+                                <label for="example-url-input" class="col-xs-2 col-form-label">Class</label>
+                                <div class="col-xs-6">
+                                  <input class="form-control" name="TxtClass" id="TxtClass"   ng-model="TxtClass" type="text"  >
+                                </div>{{Class}}
+                            </div>
+
+                            <div class="form-group row">
+                                <label  class="col-xs-2 col-form-label">Year</label>
+                                <div class="col-xs-6">
+                                 <input class="form-control" name="TxtYear" id="TxtYear" ng-model="Year" type="text" >
+                               </div>
+                            </div>
+`
+                            <div class="form-group row">
+                              <label  class="col-xs-2 col-form-label">Exam Date</label>
+                              <div class="col-xs-6">
+                                <input class="form-control" name="TxtExam_Date" id="TxtExam_Date" ng-model="Exam_Date" type="text" >
+                              </div>
+                            </div>
+
+                            <div class="form-group row" >
+                                <label class="col-xs-2 col-form-label" >Subject</label>
+                                <div class="col-sm-6">
+                                  <input class="form-control" name="TxtSubject" id="TxtSubject" ng-model= "Subject" type="text"   >
+                                </div>
+                            </div>
+
+                            <div class="form-group row" >
+                                <label class="col-xs-2 col-form-label" >Term</label>
+                                <div class="col-sm-6">
+                                  <input class="form-control" name="TxtTerm" id="TxtTerm" ng-model= "Term" type="text"   >
+                                </div>
+                            </div>
+
+                            <div class="form-group row" >
+                                <label class="col-xs-2 col-form-label" >Description</label>
+                                <div class="col-sm-6">
+                                  <input class="form-control" name="TxtDescription" id="TxtDescription" ng-model= "Description" type="text"   >
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row" style="margin:13% ; padding-left: 123px" >
+                                <button type="button" value="submit"  data-ng-click="UpdateExamSchedule()"  class="btn btn-info" >Submit</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                           </div>
+                  <!-- </div> -->
+              </div>
+          </div>
+  </div>
+</div>
+ <div class="modal"  id="DeleteExamscheduleDataModal" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+            </div>
+            <div class="modal-body">
+
+                    <div class="form-group row" hidden>
+                       <label  class="col-xs-2 col-form-label">Transport Id</label>
+                       <div class="col-xs-6">
+                       <input name="TxtId" id="TxtId" class="form-control"  type="text" readonly hidden>
+                       </div>
+                    </div>{{t.Id}}
+
+
+
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete Record  <b></b>?</div>
+
+            </div>
+            <div class="modal-footer " >
+                <button type="button" class="btn btn-success" ng-click="DeleteExamSchedule(es)"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+                <!-- END CONTENT FRAME -->
+
+        <!-- END CONTENT FRAME -->        
+<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+
+<!-- END TEMPLATE -->
+

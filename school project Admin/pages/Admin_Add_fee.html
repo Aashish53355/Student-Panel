@@ -1,0 +1,283 @@
+    <!-- START BREADCRUMB -->
+    <ul class="breadcrumb push-down-0">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Report</a></li>
+    <li class="active">Student fee List</li>
+    </ul>
+    <div class="content-frame">   
+
+    <!-- START CONTENT FRAME TOP -->
+
+    <div class="page-title" >            
+    <h2><span class="fa fa-smile-o"></span> Student fee List</h2>
+    </div>                       
+
+
+    <div>
+    <div class="clearfix">
+
+    <br>
+
+    </div>
+
+    <div style="margin: 5%; width: 100%%">
+
+    <table BORDER="2" style="border-color: #1caf9a; width: 100%" ng-controller="showfeeController" >
+    <tr  style="background-color: #1caf9a; ">
+    <td >
+    <div class="col-sm-4"><h2 style="color: white">Student fee List</h2>
+
+    </div>
+    <div class="col-sm-2" >
+    <select class="combobox form-control" id="Addstudent"  data-ng-model="Select_class.Class_Id" ng-options="obj.Class_Id as obj.Std for obj in classlist"  data-ng-change="getstudentsFee()" >
+     <option value="" >Select a class</option></select><!-- Modal -->
+    </div>
+
+    <div>
+     <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModal">Add Student fee </button>
+    </div>
+
+
+
+
+    <div class="modal" id="myModal" role="dialog" >
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          <h4 class="modal-title">Admin Exam Schedule</h4>
+        </div>
+        <div class="modal-body">
+         <div style="margin: 5%; width: 100%% ; margin-right: -20%">
+
+          <div class="form-group row" ng-controller="showfeeController">
+            <label class="col-xs-2 col-form-label">Class</label>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <select class="combobox form-control" id="comboClass"  data-ng-model="Select_class.Class_Id" ng-options="obj.Class_Id as obj.Std for obj in classlist"  data-ng-change="getstudentlist()" required="required">
+                  <option value="">Select a Class</option>
+
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-xs-2 col-form-label">Student Name</label>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <select ng-model="Select_Student.Student_Id" id="Student_Id"  ng-options="obj.Student_Id as obj.FirstName for obj in Detail" class="combobox form-control"  data-ng-change="getFeeList()" >
+                    <option value="" > Select Student Name</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-xs-2 col-form-label">FeeType</label>
+              <div class="col-sm-6">
+                <select class="combobox form-control" ng-model="Select_Feetype.ID"  id="feetypeabc" ng-options="obj.ID as obj.Fee_type for obj in feetype" ng-change="getFeeDetails()">
+                  <option value="">Select FeeType</option>
+                </select>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div ng-repeat="s in feetdetails" >
+              <div class="form-group row">
+                <label  for="example-url-input" class="col-xs-2 col-form-label">Fee Amount</label>
+                <div class="col-xs-6">
+                  <input  class="form-control" type="text"   value={{s.Amount}} readonly>
+                </div>
+              </div>
+              
+              <div class="form-group row">
+                <label  for="example-url-input" class="col-xs-2 col-form-label" >Paid</label>
+                <div class="col-xs-6">
+                  <input type="number" class="form-control" type="text" value={{s.Fee_Paid}} readonly>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label  for="example-url-input" class="col-xs-2 col-form-label">Balance</label>
+                <div class="col-xs-6">
+                  <input type="number" class="form-control" type="text" value={{s.Balance}} readonly >
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <label  for="example-url-input" class="col-xs-2 col-form-label">Pay fee</label>
+                <div class="col-xs-6">
+                  <input type="text"  class="form-control"  ng-model="Fee_Paid" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'   required>
+                </div>
+              </div>
+
+
+              <div class="form-group row" style="margin:5% ; padding-left: 300px" ng-controller="aboutController"  >
+
+              <button type="button" value="submit" class="btn btn-info" ng-click="UpdateFee()">Update Fee</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                
+              </div>
+
+            </div>
+            <!-- END CONTENT FRAME -->
+          </div> 
+
+        </td>
+      </tr>
+      <tr height=20%>
+
+        <TD>
+          <TABLE class="table table-bordered" style="margin:1% ; width:98% ">
+           <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Student Name</th>
+              <th>Fee Type</th>
+              <th> Fee Paid</th>
+              <th>Balance</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="s in feetdetails">
+              <td>
+                {{$index +1}}
+              </td>
+              <td>
+                {{s.Student_Name}}
+              </td>
+              <td>
+                {{s.Fee_type}}
+              </td> 
+
+              <td>
+                {{s.Fee_Paid}}
+              </td>
+              <td>
+                {{s.Balance}}
+              </td>
+               <td>  
+                   <i class="fa fa-pencil-square-o"
+
+                   title="Edit"
+                   id="btnEditStudentfeeData" name="btnEditStudentfeeData"
+                   ng-click="editstudentfee(s)"
+                   data-role="button"
+                   data-toggle="modal"
+                   data-target="#editstudentfeeModal"></i>
+                 </td>
+
+            </tr>
+          </tbody>
+        </TD>
+
+      </tr>
+    </table>
+    </div>
+    <div class="modal" id="editstudentfeeModal" role="dialog" >  <!--Holiday Edit  modal-->
+
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                  <h4 class="modal-title">Edit Student Fee</h4>
+                </div>
+
+                    <div class="modal-body">
+                        <!-- <div style="margin: 5%; width: 100%% ; padding-top: 130px" data-ng-repeat="s in Detail"> -->
+
+                                  <div class="form-group row"  >
+                                      <label  class="col-xs-2 col-form-label">Class Id</label>
+                                      <div class="col-xs-6">
+                                        <input name="TxtClass_Id" id="TxtClass_Id"  ng-model="Class_Id" class="form-control"  type="text"  >
+                                      </div>
+                                  </div>{{s.Student_Id}}
+
+                                  <div class="form-group row"  >
+                                      <label  class="col-xs-2 col-form-label">Student Id</label>
+                                      <div class="col-xs-6">
+                                        <input name="TxtStudent_Id" id="TxtStudent_Id"  ng-model="Student_Id" class="form-control"  type="text"  >
+                                      </div>
+                                  </div>{{s.Student_Id}}
+
+                                  <div class="form-group row"  >
+                                      <label for="example-url-input" class="col-xs-2 col-form-label">Student Name</label>
+                                      <div class="col-xs-6">
+                                        <input class="form-control" name="TxtStudent_Name" id="TxtStudent_Name"   ng-model="Student_Name" type="text"  >
+                                      </div>{{Student_Name}}
+                                  </div>
+                                   <div class="form-group row">
+                                      <label  class="col-xs-2 col-form-label">Fee ID</label>
+                                      <div class="col-xs-6">
+                                       <input class="form-control" name="TxtID" id="TxtID" ng-model="ID" type="text" >
+                                     </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                      <label  class="col-xs-2 col-form-label">Fee type</label>
+                                      <div class="col-xs-6">
+                                       <input class="form-control" name="TxtFee_type" id="TxtFee_type" ng-model="Fee_type" type="text" >
+                                     </div>
+                                  </div>
+    `
+                                  <div class="form-group row">
+                                    <label  class="col-xs-2 col-form-label">Fee Paid</label>
+                                    <div class="col-xs-6">
+                                      <input class="form-control" name="TxtFee_Paid" id="TxtFee_Paid" ng-model="Fee_Paid" type="text" >
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row" >
+                                      <label class="col-xs-2 col-form-label" >Balance</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" name="TxtBalance" id="TxtBalance" ng-model= "Balance" type="text"   >
+                                      </div>
+                                  </div>
+
+                                  
+
+                                  <div class="form-group row" style="margin:13% ; padding-left: 123px" >
+                                      <button type="button" value="submit"  data-ng-click="Updatestudentfee()"  class="btn btn-info" >Submit</button>
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                 </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+        </div>
+    </div>
+        <!-- END CONTENT FRAME -->
+
+
+    </div>            
+    <!-- END PAGE CONTENT -->
+    </div>
+                         
+    <!-- END CONTENT FRAME -->
+
+
+    </div>            
+    <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END BREADCRUMB -->                                                
+
+    <!-- START CONTENT FRAME -->
+
+    <!-- END CONTENT FRAME -->
+
+
+    </div>            
+    <!-- END PAGE CONTENT -->
+    </div>
+
+
